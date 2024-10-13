@@ -1,28 +1,25 @@
 {
-    "manifest_version": 3,
     "name": "Patch: Social Media Blocker and YouTube Cleaner",
-    "version": "1.",
     "description": "Blocks common social media sites and removes the secondary column on YouTube.",
+    "version": "1.0",
     "permissions": [
-      "tabs",
-      "webRequest",
-      "webRequestBlocking",
-      "storage",
-      "activeTab"
+       "webRequestBlocking",
+       "webRequest",
+       "activeTab",
+       "tabs",
+       "http://*/*",
+       "https://*/*"
     ],
-    "background": {
-      "service_worker": "background.js"
+    "background" : {
+      "scripts":  [
+        "background.js"
+      ]
     },
     "content_scripts": [
       {
-        "matches": ["*:////www.youtube.com/*"],
-        "js": ["content.js"]
+        "matches": ["http://www.youtube.com/*","https://www.youtube.com/*"],
+        "js": ["removeYoutubeRelated.js"]
       }
     ],
-    "web_accessible_resources": [
-      {
-        "resources": ["*"],
-        "matches": ["<all_urls>"]
-      }
-    ]
+    "manifest_version": 2
   }

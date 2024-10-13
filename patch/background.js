@@ -1,14 +1,14 @@
-const blockedSites = [
-    "*:////www.instagram.com/*",
-    "*://twitter.com/*", // X is now Twitter
-    "*:////www.facebook.com/*",
-    "*:////www.tiktok.com/*"
-  ];
-  
-  chrome.webRequest.onBeforeRequest.addListener(
-    function(details) {
-      return { cancel: true };
-    },
-    { urls: blockedSites },
-    ["blocking"]
-  );
+console.log("Loaded extension");
+
+
+function blockRequest(details) {
+    return { cancel: true };
+}
+
+function updateFilters(urls) {
+    if (chrome.webRequest.onBeforeRequest.hasListener(blockRequest))
+        chrome.webRequest.onBeforeRequest.removeListener(blockRequest);
+    chrome.webRequest.onBeforeRequest.addListener(blockRequest, { urls: ["*://*.instagram.com/*", "*://*.youtube.com/youtubei/v1/reel/*"] }, ['blocking']);
+}
+
+updateFilters();

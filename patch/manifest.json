@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Social Media Blocker and YouTube Cleaner",
+    "name": "Patch: Social Media Blocker and YouTube Cleaner",
     "version": "1.",
     "description": "Blocks common social media sites and removes the secondary column on YouTube.",
     "permissions": [

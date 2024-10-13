@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Social Media Blocker and YouTube Cleaner",
+    "version": "1.",
+    "description": "Blocks common social media sites and removes the secondary column on YouTube.",
+    "permissions": [
+      "tabs",
+      "webRequest",
+      "webRequestBlocking",
+      "storage",
+      "activeTab"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*:////www.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["*"],
+        "matches": ["&lt;all_urls&gt;"]
+      }
+    ]
+  }
